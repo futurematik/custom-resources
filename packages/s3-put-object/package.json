@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/s3-put-object",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
