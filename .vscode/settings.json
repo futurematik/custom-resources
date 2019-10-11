@@ -1,0 +1,13 @@
+{
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.lintTask.enable": true,
+  "eslint.workingDirectories": [
+    { "directory": "packages/s3-put-object", "changeProcessCWD": true }
+  ]
+}

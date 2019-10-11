@@ -1,0 +1,45 @@
+{
+  "name": "@fmtk/custom-resources",
+  "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "yarn clean && yarn compile && yarn lint",
+    "cdk": "yarn workspace test-deploy cdk",
+    "clean": "wsrun --exclude-missing clean",
+    "clean-npm": "find . -name node_modules -type d -prune -exec rm -rf {} \\;",
+    "compile": "wsrun --exclude-missing --stages compile",
+    "lint": "wsrun --exclude-missing lint",
+    "watch:compile": "wsrun compile -w"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": []
+  },
+  "devDependencies": {
+    "@fmtk/aws-custom-resource": "^0.3.0",
+    "@fmtk/ts-build": "^0.5.0",
+    "@fmtk/validation": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
+    "aws-sdk": "^2.547.0",
+    "builtin-modules": "^3.1.0",
+    "chokidar": "^3.2.1",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "lerna": "^3.16.4",
+    "prettier": "^1.18.2",
+    "rollup": "^1.23.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "source-map-support": "^0.5.13",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3",
+    "wsrun": "^5.0.2"
+  }
+}

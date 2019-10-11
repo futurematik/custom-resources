@@ -1,0 +1,14 @@
+{
+  "name": "test-deploy",
+  "version": "0.0.0",
+  "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@aws-cdk/aws-s3": "^1.12.0",
+    "@aws-cdk/core": "^1.12.0",
+    "@fmtk/s3-put-object": "^0.0.0",
+    "aws-cdk": "^1.12.0"
+  }
+}
