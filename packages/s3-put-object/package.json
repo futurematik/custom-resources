@@ -4,6 +4,7 @@
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
+  "repository": "https://github.com/futurematik/custom-resources",
   "license": "MIT",
   "private": false,
   "scripts": {

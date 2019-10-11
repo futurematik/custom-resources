@@ -1,15 +1,19 @@
 {
   "name": "@fmtk/custom-resources",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
+  "repository": "https://github.com/futurematik/custom-resources",
   "license": "MIT",
   "private": true,
   "scripts": {
     "build": "yarn clean && yarn compile && yarn lint",
     "cdk": "yarn workspace test-deploy cdk",
-    "clean": "wsrun --exclude-missing clean",
     "clean-npm": "find . -name node_modules -type d -prune -exec rm -rf {} \\;",
+    "clean": "wsrun --exclude-missing clean",
     "compile": "wsrun --exclude-missing --stages compile",
     "lint": "wsrun --exclude-missing lint",
+    "postversion": "git push --follow-tags",
+    "prepublish": "yarn build",
+    "preversion": "yarn build",
     "watch:compile": "wsrun compile -w"
   },
   "workspaces": {
