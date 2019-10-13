@@ -6,7 +6,15 @@
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
   "repository": "https://github.com/futurematik/custom-resources",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src/",
+    "lib/",
+    "dist/"
+  ],
   "scripts": {
     "build": "yarn clean && yarn lint && yarn compile",
     "compile": "rollup -c",

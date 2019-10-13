@@ -1,17 +1,16 @@
-# S3PutObject
+# S3UnpackAsset
 
-Write an object with the given content to an S3 bucket. If an object is supplied to the data prop, it will be serialized, but note that numbers and booleans are converted to strings by CloudFormation.
+Upload a zip and unpack it to the specified bucket.
 
 ```typescript
 const bucket = new s3.Bucket(this, 'Bucket');
 
-new S3PutObject(this, 'PutObj', {
-  bucket: bucket.bucketName,
-  objectName: 'test/file.json',
-  // the data object will be serialized
-  data: {
-    one: 1, // but this will be written as a string
-    two: 'two',
-  },
+const asset = makeFileAsset(this, 'path/to/folder/');
+
+new S3UnpackAsset(this, 'Unpack', {
+  sourceBucket: asset.s3BucketName,
+  sourceObjectName: asset.s3ObjectKey,
+  destinationBucket: bucket.bucketName,
+  destinationPrefix: 'foo/bar',
 });
 ```
