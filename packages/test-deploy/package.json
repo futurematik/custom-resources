@@ -4,11 +4,14 @@
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
   "license": "MIT",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "clean": "rm -rf cdk.out/"
+  },
   "dependencies": {
     "@aws-cdk/aws-s3": "^1.12.0",
     "@aws-cdk/core": "^1.12.0",
     "@fmtk/s3-put-object": "^0.1.1",
+    "@fmtk/s3-unpack-asset": "^0.0.0",
     "aws-cdk": "^1.12.0"
   }
 }

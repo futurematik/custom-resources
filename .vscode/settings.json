@@ -8,6 +8,9 @@
   ],
   "eslint.lintTask.enable": true,
   "eslint.workingDirectories": [
-    { "directory": "packages/s3-put-object", "changeProcessCWD": true }
+    { "directory": "packages/commons", "changeProcessCWD": true },
+    { "directory": "packages/s3-put-object", "changeProcessCWD": true },
+    { "directory": "packages/s3-unpack-asset", "changeProcessCWD": true },
+    { "directory": "packages/test-deploy", "changeProcessCWD": true }
   ]
 }

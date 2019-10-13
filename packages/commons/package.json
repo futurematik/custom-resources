@@ -1,23 +1,26 @@
 {
-  "name": "@fmtk/s3-put-object",
-  "version": "0.1.1",
+  "name": "@fmtk/custom-resources-commons",
+  "version": "0.0.0",
   "main": "lib/bundle.js",
+  "module": "lib/bundle.mjs",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
   "repository": "https://github.com/futurematik/custom-resources",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "yarn clean && yarn lint && yarn compile",
     "compile": "rollup -c",
-    "clean": "rm -rf lib/ dist/",
+    "clean": "rm -rf lib/",
     "lint": "eslint \"src/**\"",
     "watch": "yarn run compile -w"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "@aws-cdk/aws-iam": "^1.12.0",
-    "@aws-cdk/aws-lambda": "^1.12.0",
-    "@aws-cdk/core": "^1.12.0",
-    "@fmtk/custom-resources-commons": "^0.0.0"
+    "@aws-cdk/assets": "^1.12.0",
+    "@aws-cdk/aws-s3-assets": "^1.12.0",
+    "@aws-cdk/core": "^1.12.0"
   }
 }
