@@ -1,6 +1,6 @@
 {
   "name": "test-deploy",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
   "license": "MIT",
   "private": true,
@@ -11,9 +11,9 @@
   "dependencies": {
     "@aws-cdk/aws-s3": "^1.12.0",
     "@aws-cdk/core": "^1.12.0",
-    "@fmtk/custom-resources-commons": "^0.1.1",
-    "@fmtk/s3-put-object": "^0.1.3",
-    "@fmtk/s3-unpack-asset": "^0.1.1",
+    "@fmtk/custom-resources-commons": "^0.1.2",
+    "@fmtk/s3-put-object": "^0.1.4",
+    "@fmtk/s3-unpack-asset": "^0.1.2",
     "aws-cdk": "^1.12.0"
   }
 }
