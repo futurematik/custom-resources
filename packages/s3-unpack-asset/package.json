@@ -12,7 +12,8 @@
   },
   "files": [
     "src/",
-    "lib/"
+    "lib/",
+    "dist/"
   ],
   "scripts": {
     "build": "yarn clean && yarn lint && yarn compile",
