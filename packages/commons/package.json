@@ -19,11 +19,12 @@
     "build": "yarn clean && yarn lint && yarn compile",
     "compile": "rollup -c",
     "clean": "rm -rf lib/",
-    "lint": "eslint \"src/**\"",
+    "lint": "eslint src/ --ext=ts,tsx",
     "watch": "yarn run compile -w"
   },
   "dependencies": {
     "@aws-cdk/assets": "^1.12.0",
+    "@aws-cdk/aws-lambda": "^1.12.0",
     "@aws-cdk/aws-s3-assets": "^1.12.0",
     "@aws-cdk/core": "^1.12.0"
   }
