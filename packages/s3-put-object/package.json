@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/s3-put-object",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
@@ -18,6 +18,6 @@
     "@aws-cdk/aws-iam": "^1.12.0",
     "@aws-cdk/aws-lambda": "^1.12.0",
     "@aws-cdk/core": "^1.12.0",
-    "@fmtk/custom-resources-commons": "^0.0.0"
+    "@fmtk/custom-resources-commons": "^0.1.0"
   }
 }
