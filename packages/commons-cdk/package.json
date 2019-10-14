@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/custom-resources-commons-cdk",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "lib/bundle.js",
   "module": "lib/bundle.mjs",
   "types": "lib/index.d.ts",
