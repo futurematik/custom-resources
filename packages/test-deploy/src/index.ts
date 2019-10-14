@@ -1,17 +1,15 @@
 import path from 'path';
 import * as cdk from '@aws-cdk/core';
-import * as s3 from '@aws-cdk/aws-s3';
 import { S3PutObject } from '@fmtk/s3-put-object';
 import { S3UnpackAsset } from '@fmtk/s3-unpack-asset';
-import { makeFileAsset } from '@fmtk/custom-resources-commons';
+import { DeletableBucket } from '@fmtk/s3-empty-bucket';
+import { makeFileAsset } from '@fmtk/custom-resources-commons-cdk';
 
 class CustomResourcesTestStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const bucket = new s3.Bucket(this, 'Bucket', {
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
-    });
+    const bucket = new DeletableBucket(this, 'Bucket');
 
     new S3PutObject(this, 'PutObj', {
       bucket: bucket.bucketName,

@@ -4,7 +4,7 @@ import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
 import { S3PutObjectProps, validateS3PutObjectProps } from './S3PutObjectProps';
 import { assertValid } from '@fmtk/validation';
-import { CustomResource } from '@fmtk/custom-resources-commons';
+import { CustomResource } from '@fmtk/custom-resources-commons-cdk';
 
 export class S3PutObject extends CustomResource<S3PutObjectProps> {
   constructor(scope: cdk.Construct, id: string, props: S3PutObjectProps) {

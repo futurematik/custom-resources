@@ -12,6 +12,8 @@
     "@aws-cdk/aws-s3": "^1.12.0",
     "@aws-cdk/core": "^1.12.0",
     "@fmtk/custom-resources-commons": "^0.1.2",
+    "@fmtk/custom-resources-commons-cdk": "^0.1.2",
+    "@fmtk/s3-empty-bucket": "^0.0.0",
     "@fmtk/s3-put-object": "^0.2.0",
     "@fmtk/s3-unpack-asset": "^0.2.0",
     "aws-cdk": "^1.12.0"
