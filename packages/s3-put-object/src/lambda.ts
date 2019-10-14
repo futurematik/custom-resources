@@ -37,6 +37,10 @@ async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
     contentType = 'application/json';
   }
 
+  if (props.contentType) {
+    contentType = props.contentType;
+  }
+
   if (props.data && typeof props.data === 'object') {
     data = JSON.stringify(props.data);
   } else {
@@ -50,13 +54,14 @@ async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
       Body: data,
       Bucket: props.bucket,
       Key: props.objectName,
-      ContentType: props.contentType || contentType,
+      ContentType: contentType,
     })
     .promise();
 
   const hash = createHash('sha1');
   hash.update(props.bucket);
   hash.update(props.objectName);
+  hash.update(contentType);
   hash.update(data);
 
   return {
