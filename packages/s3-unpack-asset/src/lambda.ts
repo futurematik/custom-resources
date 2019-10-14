@@ -11,6 +11,7 @@ import {
   validateS3UnpackAssetProps,
 } from './S3UnpackAssetProps';
 import { readZip } from '@fmtk/util-zip';
+import { lookup as mime } from 'mime-types';
 
 export const handler = createCustomResourceHandler(
   {
@@ -64,6 +65,7 @@ async function unpack(
         Body: await entry.open(),
         Bucket: props.destinationBucket,
         Key: destPath,
+        ContentType: mime(entry.path) || 'application/octet-stream',
       })
       .promise();
   }
