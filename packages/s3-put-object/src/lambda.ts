@@ -20,7 +20,22 @@ export const handler = createCustomResourceHandler(
 );
 
 async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
-  let data: string;
+  let data: string | Buffer;
+  let contentType: string;
+
+  if (!props.data) {
+    data = '';
+    contentType = 'application/octet-stream';
+  } else if (typeof props.data === 'string') {
+    data = props.data;
+    contentType = 'text/plain';
+  } else if (Buffer.isBuffer(props.data)) {
+    data = props.data;
+    contentType = 'application/octet-stream';
+  } else {
+    data = JSON.stringify(props.data);
+    contentType = 'application/json';
+  }
 
   if (props.data && typeof props.data === 'object') {
     data = JSON.stringify(props.data);
@@ -35,6 +50,7 @@ async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
       Body: data,
       Bucket: props.bucket,
       Key: props.objectName,
+      ContentType: props.contentType || contentType,
     })
     .promise();
 

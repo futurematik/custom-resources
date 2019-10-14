@@ -18,7 +18,7 @@ export class S3PutObject extends CustomResource<S3PutObjectProps> {
 
     this.handler.addToRolePolicy(
       new iam.PolicyStatement({
-        actions: ['s3:PutObject'],
+        actions: ['s3:PutObject*'],
         resources: [`arn:aws:s3:::${props.bucket}/${props.objectName}`],
       }),
     );
