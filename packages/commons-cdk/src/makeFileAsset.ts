@@ -21,7 +21,7 @@ export function makeFileAsset(
     id++;
   }
 
-  const asset = new s3assets.Asset(scope, `Asset`, { path });
+  const asset = new s3assets.Asset(scope, `Asset${id}`, { path });
 
   switch (opts.requireType) {
     case FileAssetType.Directory:

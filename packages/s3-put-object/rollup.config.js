@@ -1,9 +1,10 @@
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@fmtk/rollup-plugin-ts';
 import { terser } from 'rollup-plugin-terser';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import bundleSize from 'rollup-plugin-bundle-size';
 import builtins from 'builtin-modules';
+import json from 'rollup-plugin-json';
 
 export default [
   {
@@ -19,6 +20,7 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
+      json(),
       typescript({
         compilerOptions: {
           declaration: false,
