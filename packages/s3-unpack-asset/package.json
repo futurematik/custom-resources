@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/s3-unpack-asset",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
