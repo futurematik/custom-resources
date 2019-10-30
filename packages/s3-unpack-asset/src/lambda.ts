@@ -46,8 +46,8 @@ async function unpack(
 
   const objStream = s3
     .getObject({
-      Bucket: props.sourceBucket,
-      Key: props.sourceObjectName,
+      Bucket: props.source.bucket,
+      Key: props.source.key,
     })
     .createReadStream();
 

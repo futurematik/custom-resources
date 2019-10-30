@@ -3,10 +3,7 @@ import * as cdk from '@aws-cdk/core';
 import { S3PutObject } from '@fmtk/s3-put-object';
 import { S3UnpackAsset } from '@fmtk/s3-unpack-asset';
 import { DeletableBucket } from '@fmtk/s3-empty-bucket';
-import {
-  makeFileAsset,
-  makeFileAssetRef,
-} from '@fmtk/custom-resources-commons-cdk';
+import { makeFileAssetRef } from '@fmtk/custom-resources-commons-cdk';
 
 class CustomResourcesTestStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -36,14 +33,13 @@ class CustomResourcesTestStack extends cdk.Stack {
       ],
     });
 
-    const asset = makeFileAsset(
+    const asset = makeFileAssetRef(
       this,
       path.resolve(__dirname, '../test-assets'),
     );
 
     new S3UnpackAsset(this, 'Unpack', {
-      sourceBucket: asset.s3BucketName,
-      sourceObjectName: asset.s3ObjectKey,
+      source: asset,
       destinationBucket: bucket.bucketName,
       destinationPrefix: 'foo/bar',
     });
