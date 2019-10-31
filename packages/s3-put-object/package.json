@@ -28,7 +28,7 @@
     "@aws-cdk/core": "^1.12.0",
     "@fmtk/custom-resources-commons": "^0.3.0",
     "@fmtk/custom-resources-commons-cdk": "^0.4.0",
-    "@fmtk/validation": "^3.3.2",
+    "@fmtk/validation": "^3.4.1",
     "mime-types": "^2.1.24"
   },
   "devDependencies": {

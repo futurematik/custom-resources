@@ -31,6 +31,9 @@ class CustomResourcesTestStack extends cdk.Stack {
         { search: 'to', replace: '2' },
         { search: 'of(?!f)', replace: 'OF', regex: true },
       ],
+      metadata: {
+        'cache-control': 'public, max-age=3600',
+      },
     });
 
     const asset = makeFileAssetRef(
@@ -42,6 +45,13 @@ class CustomResourcesTestStack extends cdk.Stack {
       source: asset,
       destinationBucket: bucket.bucketName,
       destinationPrefix: 'foo/bar',
+      metadata: [
+        {
+          glob: 'afolder/**/*',
+          metadata: { 'cache-control': 'public, max-age=3600' },
+        },
+        { glob: '*', metadata: { 'cache-control': 'public, max-age=60' } },
+      ],
     });
   }
 }

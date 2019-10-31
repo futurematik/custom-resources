@@ -311,10 +311,10 @@
     "@fmtk/util-queue" "^0.1.1"
     yauzl "^2.10.0"
 
-"@fmtk/validation@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.npmjs.org/@fmtk/validation/-/validation-3.3.2.tgz#e45d3be26b0cb402c224107499de90b285d6450b"
-  integrity sha512-QqVGJ0NtHRQcfDOWAP4fD57sKcTfDiuCkRuTtR5g/5qpMNJA2/TAhsqTQtfbUC7zmQutcpZNUEp7PHavGuE/Og==
+"@fmtk/validation@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmjs.org/@fmtk/validation/-/validation-3.4.1.tgz#c724f3246baf417be9628b87c63ff64590b62192"
+  integrity sha512-+0KKAurvERfuHw5FtHfuKN64ysI+udX7jqWuNoaLOVi5BfBfXZxU7ZO0sJ/P3HyGActT1XYK3CKDkqqqfFOP5g==
 
 "@lerna/add@3.17.0":
   version "3.17.0"
@@ -1081,7 +1081,7 @@
   resolved "https://registry.npmjs.org/@types/mime-types/-/mime-types-2.1.0.tgz#9ca52cda363f699c69466c2a6ccdaad913ea7a73"
   integrity sha1-nKUs2jY/aZxpRmwqbM2q2RPqenM=
 
-"@types/minimatch@*":
+"@types/minimatch@*", "@types/minimatch@^3.0.3":
   version "3.0.3"
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
@@ -1445,22 +1445,7 @@ aws-cdk@^1.12.0:
     yaml "^1.7.0"
     yargs "^14.0.0"
 
-aws-sdk@^2.543.0, aws-sdk@^2.547.0:
-  version "2.547.0"
-  resolved "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.547.0.tgz#2511cb5c6471467b2f9ab59d10227640e0c75a0f"
-  integrity sha512-SbFTTkxRMynrcDxXxWS3NxTbgpBhBDHKSQpP6Pd8qVIgul2uRjCE1YLk9dq1EXdY0ti8KmoLS9xY8R3CPjxLag==
-  dependencies:
-    buffer "4.9.1"
-    events "1.1.1"
-    ieee754 "1.1.13"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.3.2"
-    xml2js "0.4.19"
-
-aws-sdk@^2.548.0:
+aws-sdk@^2.543.0, aws-sdk@^2.547.0, aws-sdk@^2.548.0:
   version "2.548.0"
   resolved "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.548.0.tgz#20a3c7a77e1c6fd694cdb5e0ecc0ccf0d0542674"
   integrity sha512-dnG1MEc3uOonGDswHPiq7TYn6EOG3+IQhF2LSRambz9adaZxwRgFOII7UVPJjh33FtxKpMzOSmf62R+EX822Nw==

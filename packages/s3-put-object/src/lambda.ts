@@ -2,11 +2,14 @@ import {
   createCustomResourceHandler,
   CustomResourceResponse,
 } from '@fmtk/aws-custom-resource';
-import { rootValidator, ValidationMode } from '@fmtk/validation';
 import { S3 } from 'aws-sdk';
 import { S3PutObjectProps, validateS3PutObjectProps } from './S3PutObjectProps';
 import { lookup as mime } from 'mime-types';
-import { hash } from '@fmtk/custom-resources-commons';
+import {
+  extractMetadataHeaders,
+  hash,
+  handlerValidator,
+} from '@fmtk/custom-resources-commons';
 
 export const handler = createCustomResourceHandler(
   {
@@ -14,15 +17,13 @@ export const handler = createCustomResourceHandler(
     update: put,
   },
   {
-    propertyValidator: rootValidator(validateS3PutObjectProps, {
-      mode: ValidationMode.String,
-    }),
+    propertyValidator: handlerValidator(validateS3PutObjectProps),
   },
 );
 
 async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
   let data: string | Buffer;
-  let contentType: string;
+  const metadata = extractMetadataHeaders(props.metadata || {});
 
   const s3 = new S3();
 
@@ -41,9 +42,14 @@ async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
     }
 
     data = Buffer.concat(chunks);
-    contentType =
-      props.contentType || mime(props.source.key) || 'application/octet-stream';
+
+    if (!metadata.headers.ContentType) {
+      metadata.headers.ContentType =
+        mime(props.source.key) || 'application/octet-stream';
+    }
   } else {
+    let contentType: string;
+
     if (!props.contents) {
       data = '';
       contentType = 'application/octet-stream';
@@ -58,7 +64,9 @@ async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
       contentType = 'application/json';
     }
 
-    contentType = props.contentType || contentType;
+    if (!metadata.headers.ContentType) {
+      metadata.headers.ContentType = contentType;
+    }
   }
 
   if (props.replacements) {
@@ -80,18 +88,14 @@ async function put(props: S3PutObjectProps): Promise<CustomResourceResponse> {
       Body: data,
       Bucket: props.target.bucket,
       Key: props.target.key,
-      ContentType: contentType,
+      Metadata: metadata.metadata,
+      ...metadata.headers,
     })
     .promise();
 
   return {
     responseStatus: 'SUCCESS',
-    physicalResourceId: hash([
-      props.target.bucket,
-      props.target.key,
-      contentType,
-      data,
-    ]),
+    physicalResourceId: hash([props.target.bucket, props.target.key, data]),
   };
 }
 

@@ -28,13 +28,15 @@
     "@aws-cdk/core": "^1.12.0",
     "@fmtk/custom-resources-commons": "^0.3.0",
     "@fmtk/custom-resources-commons-cdk": "^0.4.0",
-    "@fmtk/validation": "^3.3.2"
+    "@fmtk/validation": "^3.4.1"
   },
   "devDependencies": {
     "@fmtk/aws-custom-resource": "^0.3.0",
     "@fmtk/util-zip": "^0.3.0",
     "@types/mime-types": "^2.1.0",
+    "@types/minimatch": "^3.0.3",
     "aws-sdk": "^2.548.0",
-    "mime-types": "^2.1.24"
+    "mime-types": "^2.1.24",
+    "minimatch": "^3.0.4"
   }
 }

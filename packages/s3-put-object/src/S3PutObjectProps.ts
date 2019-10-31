@@ -14,6 +14,8 @@ import {
 import {
   S3ObjectRef,
   validateS3ObjectRef,
+  Metadata,
+  validateMetadata,
 } from '@fmtk/custom-resources-commons';
 
 export interface TextReplacement {
@@ -25,7 +27,7 @@ export interface TextReplacement {
 export interface S3PutObjectProps {
   target: S3ObjectRef;
   contents?: unknown;
-  contentType?: string;
+  metadata?: Metadata;
   replacements?: TextReplacement[];
   source?: S3ObjectRef;
 }
@@ -40,7 +42,7 @@ export const validateS3PutObjectProps = and(
   properties<S3PutObjectProps>({
     target: validateS3ObjectRef,
     contents: optional(any()),
-    contentType: optional(text()),
+    metadata: optional(validateMetadata),
     replacements: optional(array(validateTextReplacement)),
     source: optional(validateS3ObjectRef),
   }),

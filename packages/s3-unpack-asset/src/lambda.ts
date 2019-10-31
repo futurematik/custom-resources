@@ -4,14 +4,20 @@ import {
   createCustomResourceHandler,
   CustomResourceResponse,
 } from '@fmtk/aws-custom-resource';
-import { rootValidator, ValidationMode } from '@fmtk/validation';
 import { S3 } from 'aws-sdk';
 import {
   S3UnpackAssetProps,
   validateS3UnpackAssetProps,
+  MetadataGlob,
 } from './S3UnpackAssetProps';
 import { readZip } from '@fmtk/util-zip';
 import { lookup as mime } from 'mime-types';
+import minimatch from 'minimatch';
+import {
+  handlerValidator,
+  extractMetadataHeaders,
+  MetadataWithHeaders,
+} from '@fmtk/custom-resources-commons';
 
 export const handler = createCustomResourceHandler(
   {
@@ -29,9 +35,7 @@ export const handler = createCustomResourceHandler(
     },
   },
   {
-    propertyValidator: rootValidator(validateS3UnpackAssetProps, {
-      mode: ValidationMode.String,
-    }),
+    propertyValidator: handlerValidator(validateS3UnpackAssetProps),
   },
 );
 
@@ -40,6 +44,7 @@ async function unpack(
   physicalResourceId: string,
 ): Promise<CustomResourceResponse> {
   const s3 = new S3();
+  const metadata = processMetdata(props.metadata);
 
   const filePath = '/tmp/source.zip';
   const file = fs.createWriteStream(filePath);
@@ -58,6 +63,7 @@ async function unpack(
   const zip = readZip(filePath);
 
   for await (const entry of zip) {
+    const entryMeta = findMetadata(metadata, entry.path);
     const destPath = path.join(props.destinationPrefix || '', entry.path);
 
     await s3
@@ -65,7 +71,12 @@ async function unpack(
         Body: await entry.open(),
         Bucket: props.destinationBucket,
         Key: destPath,
-        ContentType: mime(entry.path) || 'application/octet-stream',
+        ...entryMeta.headers,
+        Metadata: entryMeta.metadata,
+        ContentType:
+          entryMeta.headers.ContentType ||
+          mime(entry.path) ||
+          'application/octet-stream',
       })
       .promise();
   }
@@ -74,4 +85,32 @@ async function unpack(
     responseStatus: 'SUCCESS',
     physicalResourceId,
   };
+}
+
+interface ProcessedMetadataGlob {
+  glob: string;
+  metadata: MetadataWithHeaders;
+}
+
+function processMetdata(
+  metadata: MetadataGlob[] | undefined,
+): ProcessedMetadataGlob[] {
+  return metadata
+    ? metadata.map(x => ({
+        glob: x.glob,
+        metadata: extractMetadataHeaders(x.metadata),
+      }))
+    : [];
+}
+
+function findMetadata(
+  metadata: ProcessedMetadataGlob[],
+  path: string,
+): MetadataWithHeaders {
+  for (const item of metadata) {
+    if (minimatch(path, item.glob)) {
+      return item.metadata;
+    }
+  }
+  return { headers: {}, metadata: {} };
 }
