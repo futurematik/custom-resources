@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/s3-unpack-asset",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
@@ -26,8 +26,8 @@
     "@aws-cdk/aws-iam": "^1.12.0",
     "@aws-cdk/aws-lambda": "^1.12.0",
     "@aws-cdk/core": "^1.12.0",
-    "@fmtk/custom-resources-commons": "^0.3.0",
-    "@fmtk/custom-resources-commons-cdk": "^0.4.0",
+    "@fmtk/custom-resources-commons": "^0.4.0",
+    "@fmtk/custom-resources-commons-cdk": "^0.4.1",
     "@fmtk/validation": "^3.4.1"
   },
   "devDependencies": {
