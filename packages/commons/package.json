@@ -23,10 +23,10 @@
     "watch": "yarn run compile -w"
   },
   "dependencies": {
-    "@aws-cdk/assets": "^1.12.0",
-    "@aws-cdk/aws-lambda": "^1.12.0",
-    "@aws-cdk/aws-s3-assets": "^1.12.0",
-    "@aws-cdk/core": "^1.12.0",
+    "@aws-cdk/assets": "^1.15.0",
+    "@aws-cdk/aws-lambda": "^1.15.0",
+    "@aws-cdk/aws-s3-assets": "^1.15.0",
+    "@aws-cdk/core": "^1.15.0",
     "@fmtk/validation": "^3.4.1"
   }
 }

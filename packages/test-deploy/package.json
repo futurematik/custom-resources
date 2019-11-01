@@ -9,13 +9,15 @@
     "lint": "eslint src/ --ext=ts,tsx"
   },
   "dependencies": {
-    "@aws-cdk/aws-s3": "^1.12.0",
-    "@aws-cdk/core": "^1.12.0",
+    "@aws-cdk/aws-cloudfront": "^1.15.0",
+    "@aws-cdk/aws-s3": "^1.15.0",
+    "@aws-cdk/core": "^1.15.0",
+    "@fmtk/cf-static-site": "^0.4.0",
     "@fmtk/custom-resources-commons": "^0.4.0",
     "@fmtk/custom-resources-commons-cdk": "^0.4.1",
     "@fmtk/s3-empty-bucket": "^0.2.2",
     "@fmtk/s3-put-object": "^0.4.0",
     "@fmtk/s3-unpack-asset": "^0.3.0",
-    "aws-cdk": "^1.12.0"
+    "aws-cdk": "^1.15.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@fmtk/s3-put-object",
+  "name": "@fmtk/cf-static-site",
   "version": "0.4.0",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
@@ -23,13 +23,17 @@
     "watch": "yarn run compile -w"
   },
   "dependencies": {
+    "@aws-cdk/aws-cloudfront": "^1.15.0",
     "@aws-cdk/aws-iam": "^1.15.0",
-    "@aws-cdk/aws-lambda": "^1.15.0",
+    "@aws-cdk/aws-route53": "^1.15.0",
+    "@aws-cdk/aws-s3": "^1.15.0",
     "@aws-cdk/core": "^1.15.0",
+    "@fmtk/acm-auto-cert": "^0.4.0",
     "@fmtk/custom-resources-commons": "^0.4.0",
     "@fmtk/custom-resources-commons-cdk": "^0.4.1",
-    "@fmtk/validation": "^3.4.1",
-    "mime-types": "^2.1.24"
+    "@fmtk/s3-empty-bucket": "^0.2.2",
+    "@fmtk/s3-unpack-asset": "^0.3.0",
+    "@fmtk/validation": "^3.4.1"
   },
   "devDependencies": {
     "@fmtk/aws-custom-resource": "^0.3.1",

@@ -53,6 +53,7 @@ export const handler = createCustomResourceHandler<S3EmptyBucketProps>(
 
 async function empty(bucket: string, prefix?: string): Promise<void> {
   const s3 = new S3();
+  console.log(`empyting bucket ${bucket} (prefix='${prefix || ''}')`);
 
   for (;;) {
     const objects = await s3
@@ -60,8 +61,16 @@ async function empty(bucket: string, prefix?: string): Promise<void> {
       .promise();
 
     if (!objects.Contents || !objects.Contents.length) {
+      console.log(`nothing more to delete`);
       break;
     }
+
+    const ids = objects.Contents.reduce(
+      (a, { Key }) => (Key ? [...a, { Key }] : a),
+      [] as S3.ObjectIdentifier[],
+    );
+
+    console.log(`deleting ids`, ids);
 
     await s3
       .deleteObjects({

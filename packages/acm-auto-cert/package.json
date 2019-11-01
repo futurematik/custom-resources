@@ -1,5 +1,5 @@
 {
-  "name": "@fmtk/s3-put-object",
+  "name": "@fmtk/acm-auto-cert",
   "version": "0.4.0",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
@@ -28,8 +28,7 @@
     "@aws-cdk/core": "^1.15.0",
     "@fmtk/custom-resources-commons": "^0.4.0",
     "@fmtk/custom-resources-commons-cdk": "^0.4.1",
-    "@fmtk/validation": "^3.4.1",
-    "mime-types": "^2.1.24"
+    "@fmtk/validation": "^3.4.1"
   },
   "devDependencies": {
     "@fmtk/aws-custom-resource": "^0.3.1",

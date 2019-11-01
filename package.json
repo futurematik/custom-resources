@@ -23,7 +23,7 @@
     "nohoist": []
   },
   "devDependencies": {
-    "@fmtk/aws-custom-resource": "^0.3.0",
+    "@fmtk/aws-custom-resource": "^0.3.1",
     "@fmtk/rollup-plugin-ts": "^0.3.1",
     "@fmtk/ts-build": "^0.5.0",
     "@fmtk/validation": "^3.4.1",
