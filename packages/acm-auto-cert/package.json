@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/acm-auto-cert",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
@@ -27,7 +27,7 @@
     "@aws-cdk/aws-lambda": "^1.15.0",
     "@aws-cdk/core": "^1.15.0",
     "@fmtk/custom-resources-commons": "^0.4.1",
-    "@fmtk/custom-resources-commons-cdk": "^0.4.3",
+    "@fmtk/custom-resources-commons-cdk": "^0.4.4",
     "@fmtk/validation": "^3.4.1"
   },
   "devDependencies": {
