@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/s3-empty-bucket",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
@@ -28,7 +28,7 @@
     "@aws-cdk/aws-s3": "^1.15.0",
     "@aws-cdk/core": "^1.15.0",
     "@fmtk/custom-resources-commons": "^0.4.1",
-    "@fmtk/custom-resources-commons-cdk": "^0.4.2",
+    "@fmtk/custom-resources-commons-cdk": "^0.4.3",
     "@fmtk/validation": "^3.4.1"
   },
   "devDependencies": {
