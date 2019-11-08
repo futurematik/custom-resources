@@ -18,11 +18,12 @@ export class CfStaticSite extends cdk.Resource {
 
   constructor(scope: cdk.Construct, id: string, props: CfStaticSiteProps) {
     super(scope, id);
+    const indexDocument = props.indexDocument || 'index.html';
 
     // create a bucket to serve the website from
     this.originBucket = new DeletableBucket(this, 'StaticWWW', {
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      websiteIndexDocument: 'index.html',
+      websiteIndexDocument: indexDocument,
     });
 
     // write the build output to the origin bucket (doesn't delete old files)
@@ -58,6 +59,15 @@ export class CfStaticSite extends cdk.Resource {
 
     const distProps: ReadWrite<cf.CloudFrontWebDistributionProps> = {
       enableIpV6: true,
+      errorConfigurations: props.spa
+        ? [
+            {
+              errorCode: 404,
+              responseCode: 200,
+              responsePagePath: indexDocument,
+            },
+          ]
+        : undefined,
       originConfigs: [
         {
           behaviors: [{ isDefaultBehavior: true }],
