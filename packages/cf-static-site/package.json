@@ -1,6 +1,6 @@
 {
   "name": "@fmtk/cf-static-site",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "main": "lib/bundle.js",
   "types": "lib/index.d.ts",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",

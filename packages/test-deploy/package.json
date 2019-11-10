@@ -1,6 +1,6 @@
 {
   "name": "test-deploy",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "author": "Gordon Leigh <gordon.leigh@futurematik.co.uk>",
   "license": "MIT",
   "private": true,
@@ -12,7 +12,7 @@
     "@aws-cdk/aws-cloudfront": "^1.15.0",
     "@aws-cdk/aws-s3": "^1.15.0",
     "@aws-cdk/core": "^1.15.0",
-    "@fmtk/cf-static-site": "^0.5.3",
+    "@fmtk/cf-static-site": "^0.5.4",
     "@fmtk/custom-resources-commons": "^0.4.1",
     "@fmtk/custom-resources-commons-cdk": "^0.4.4",
     "@fmtk/s3-empty-bucket": "^0.2.5",
