@@ -44,16 +44,24 @@ export class CfStaticSite extends cdk.Resource {
       },
     );
 
+    const cup = new iam.CanonicalUserPrincipal(
+      this.originAccessId.attrS3CanonicalUserId,
+    );
+
     // let cloudfront access the S3 bucket
     this.originBucket.addToResourcePolicy(
       new iam.PolicyStatement({
         actions: ['s3:GetObject*'],
         resources: [`${this.originBucket.bucketArn}/*`],
-        principals: [
-          new iam.CanonicalUserPrincipal(
-            this.originAccessId.attrS3CanonicalUserId,
-          ),
-        ],
+        principals: [cup],
+      }),
+    );
+    this.originBucket.addToResourcePolicy(
+      new iam.PolicyStatement({
+        // s3:ListBucket is necessary for 404 response
+        actions: ['s3:ListBucket'],
+        resources: [`${this.originBucket.bucketArn}`],
+        principals: [cup],
       }),
     );
 
@@ -64,7 +72,7 @@ export class CfStaticSite extends cdk.Resource {
             {
               errorCode: 404,
               responseCode: 200,
-              responsePagePath: indexDocument,
+              responsePagePath: '/' + indexDocument,
             },
           ]
         : undefined,

@@ -75,6 +75,7 @@ class CustomResourcesTestStack extends cdk.Stack {
         ),
         domain: domainName,
         hostedZoneId,
+        spa: true,
       });
     }
   }
